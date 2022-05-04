@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "87607228-5555-4ff2-941c-483e14fffe76",
+		"name": "sentry-alert-manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "owners (teams)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/organizations/{{ORGANIZATION}}/teams/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"organizations",
+						"{{ORGANIZATION}}",
+						"teams",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "organizations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/organizations/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"organizations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "integrations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/organizations/{{ORGANIZATION}}/integrations/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"organizations",
+						"{{ORGANIZATION}}",
+						"integrations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "projects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/projects/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"projects",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "alerts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/organizations/{{ORGANIZATION}}/combined-rules/?project={{PROJECT_ID}}/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"organizations",
+						"{{ORGANIZATION}}",
+						"combined-rules",
+						""
+					],
+					"query": [
+						{
+							"key": "project",
+							"value": "{{PROJECT_ID}}/"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "alert",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/projects/{{ORGANIZATION}}/{{PROJECT_NAME}}/rules/{{ALERT_ID}}/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"projects",
+						"{{ORGANIZATION}}",
+						"{{PROJECT_NAME}}",
+						"rules",
+						"{{ALERT_ID}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "alerts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"actionMatch\":\"all\",\n  \"filterMatch\":\"all\",\n  \"actions\":[\n    {\n      \"workspace\":000000,\n      \"id\":\"sentry.integrations.slack.notify_action.SlackNotifyServiceAction\",\n      \"channel\":\"#error\"\n    }\n  ],\n  \"conditions\":[\n    {\n      \"id\":\"sentry.rules.conditions.first_seen_event.FirstSeenEventCondition\"\n    }\n  ],\n  \"filters\":[\n    \n  ],\n  \"name\":\"A new error occurred...\",\n  \"frequency\":\"1440\",\n  \"owner\":\"team:0000000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/projects/{{ORGANIZATION}}/{{PROJECT_NAME}}/rules/",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"projects",
+						"{{ORGANIZATION}}",
+						"{{PROJECT_NAME}}",
+						"rules",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "AUTH_TOKEN",
+			"value": ""
+		},
+		{
+			"key": "BASE_URL",
+			"value": "https://sentry.io/api/0"
+		},
+		{
+			"key": "ORGANIZATION",
+			"value": ""
+		},
+		{
+			"key": "PROJECT_NAME",
+			"value": ""
+		},
+		{
+			"key": "ALERT_ID",
+			"value": ""
+		},
+		{
+			"key": "PROJECT_ID",
+			"value": ""
+		}
+	]
+}

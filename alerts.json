@@ -1,0 +1,84 @@
+{
+  "alerts": [
+    {
+      "actionMatch": "all",
+      "filterMatch": "all",
+      "actions": [
+        {
+          "workspace": "$SLACK_WORKSPACE_ID",
+          "id": "sentry.integrations.slack.notify_action.SlackNotifyServiceAction",
+          "channel": "$SLACK_CHANNEL_NAME"
+        }
+      ],
+      "conditions": [
+        {
+          "id": "sentry.rules.conditions.first_seen_event.FirstSeenEventCondition"
+        }
+      ],
+      "filters": [
+        {
+          "level": "40",
+          "match": "gte",
+          "id": "sentry.rules.filters.level.LevelFilter"
+        }
+      ],
+      "name": "A new error occurred...",
+      "frequency": "1440",
+      "owner": "$OWNER"
+    },
+    {
+      "actionMatch": "any",
+      "filterMatch": "all",
+      "actions": [
+        {
+          "workspace": "$SLACK_WORKSPACE_ID",
+          "id": "sentry.integrations.slack.notify_action.SlackNotifyServiceAction",
+          "channel": "$SLACK_CHANNEL_NAME"
+        }
+      ],
+      "conditions": [
+        {
+          "id": "sentry.rules.conditions.regression_event.RegressionEventCondition"
+        }
+      ],
+      "filters": [
+        {
+          "level": "40",
+          "match": "gte",
+          "id": "sentry.rules.filters.level.LevelFilter"
+        }
+      ],
+      "name": "An old issue is unresolved...",
+      "frequency": "1440",
+      "owner": "$OWNER"
+    },
+    {
+      "actionMatch": "all",
+      "filterMatch": "all",
+      "actions": [
+        {
+          "workspace": "$SLACK_WORKSPACE_ID",
+          "id": "sentry.integrations.slack.notify_action.SlackNotifyServiceAction",
+          "channel": "$SLACK_CHANNEL_NAME"
+        }
+      ],
+      "conditions": [],
+      "filters": [
+        {
+          "comparison_type": "older",
+          "time": "hour",
+          "id": "sentry.rules.filters.age_comparison.AgeComparisonFilter",
+          "value": "24"
+        },
+        {
+          "level": "40",
+          "match": "gte",
+          "id": "sentry.rules.filters.level.LevelFilter"
+        }
+      ],
+      "name": "Don't forget about this issue...",
+      "frequency": "1440",
+      "owner": "$OWNER"
+    }
+  ]
+}
