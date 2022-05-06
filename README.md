@@ -4,7 +4,11 @@
 ![](https://img.shields.io/github/languages/code-size/gomesdigital/sentry-alert-manager?color=green)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://github.com/gomesdigital/gomesdigital/LICENSE)
 
-This tool is built from [Sentry's](https://sentry.io) private API - reverse engineered - so you can manage alerts in bulk!
+[Sentry](https://sentry.io) doesn't support editing alerts in bulk from the GUI or open API. This tool is built from their private API - reverse engineered - so you can:
+
+1. Edit alerts for multiple projects at the same time.
+2. Version control alert configurations.
+3. Ensure alert configurations are consistent across projects.
 
 ## Getting Started
 
@@ -116,7 +120,7 @@ SYNOPSIS
             Removes all the alerts from the project with name PROJECT_NAME.
             Use * to remove alerts from  all projects.
 
-    list    List projects in name-id pairs.
+    list    List project names.
     help    Print this help menu.
     exit    Kill this script.
 ```
@@ -130,7 +134,7 @@ Open an issue if you need help with anything else!
 
 Please read the [CONTRIBUTING](CONTRIBUTING.md) file for details on code of conduct, and the process for submitting pull requests.
 
-I am interested to hear how others might want to tailor this, so please do open an issue if there are missing features. There is a Postman collection inlcuded in the repo if you'd like to inspect the endpoints.
+There is a Postman collection inlcuded in the repo if you'd like to inspect the endpoints.
 
 ## License
 
