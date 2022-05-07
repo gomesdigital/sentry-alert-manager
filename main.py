@@ -26,12 +26,6 @@ import json
 import sys
 import collections
 
-# TODO
-#
-# build and include the postman workspace
-#
-# awesome README.md
-
 load_dotenv()  # loads .env to system env variables
 AUTH_TOKEN = os.getenv('AUTH_TOKEN')
 HEADERS = {'Authorization': f'Bearer {AUTH_TOKEN}'}
