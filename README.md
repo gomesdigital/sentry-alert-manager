@@ -150,7 +150,7 @@ See also the list of [contributors](https://github.com/gomesdigital/sentry-alert
 
 I've been managing a large Sentry organization for work. It is important for the dev team to be notified about the errors that matter and to not be spammed by the ones that don't. Achieving that is a gradual process though, and it takes a lot of fine tuning.
 
-Sentry doesn't support editing alerts in bulk from the GUI or open API. I designed this tool so we can:
+I designed this tool so we can:
 
 1. Track our alert configurations in templates.
 2. Make it faster to adjust which errors the dev team will hear about.
